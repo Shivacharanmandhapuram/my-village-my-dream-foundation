@@ -22,12 +22,12 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="text-left max-w-2xl">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-8">
-                Do Something <br className="hidden lg:block" />
-                Great to Help <br className="hidden lg:block" />
-                Other People
+                Connecting Bharat to India
               </h1>
               <p className="text-xl text-gray-600 mb-10 leading-relaxed font-normal max-w-lg">
-                My Village My Dream is a digital platform for collecting support to be distributed to rural communities in need of education and health.
+                Empowering villages to become healthier, stronger, and more self-reliant.
+                <br /><br />
+                My Village My Dream is a community-led rural development platform helping villagers take ownership of their community's future.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-5">
                 <Link
@@ -36,6 +36,12 @@ const Home: React.FC = () => {
                 >
                   <HandHeart size={20} className="mr-2 fill-current" />
                   Join the Movement
+                </Link>
+                <Link
+                  to="/programs"
+                  className="flex items-center justify-center px-10 py-5 rounded-full border-2 border-ngo-teal text-ngo-teal bg-transparent hover:bg-ngo-teal hover:text-white font-bold text-lg shadow-lg transition-all duration-300 transform hover:scale-105 min-w-[200px]"
+                >
+                  Explore Our Programs
                 </Link>
               </div>
             </div>
@@ -72,12 +78,14 @@ const Home: React.FC = () => {
             </div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 max-w-4xl">
-              We Are a Team Creating Change in Rural India
+              Local knowledge. Shared responsibility. Lasting change.
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
               <div className="text-gray-600 text-lg leading-relaxed">
-                Our team consists of local changemakers, youth leaders, educators, and volunteers working together to uplift rural communities. We believe that sustainable progress begins within the village itself.
+                My Village My Dream works with villagers—not simply for villagers. We identify needs together, involve local people in planning and delivery, and develop programs that strengthen preventive health, nutrition, sanitation, wellness, inclusion, livelihoods, and community confidence.
+                <br /><br />
+                Our health work focuses on bringing early screening and understandable education closer to rural families, especially for conditions that may remain silent until complications develop.
               </div>
               <div className="text-gray-800 text-xl font-medium leading-relaxed border-l-4 border-ngo-orange pl-6">
                 "Our vision is rooted in one belief: progress becomes possible when communities, leaders, and volunteers work together. By combining local knowledge with compassionate action, we create long-lasting change in health, education, and livelihoods."
@@ -89,7 +97,7 @@ const Home: React.FC = () => {
                 <div className="text-5xl md:text-6xl font-bold text-ngo-orange mb-3">
                   <CountUp end={9500} suffix="+" duration={2500} />
                 </div>
-                <div className="text-gray-700 font-medium text-lg">People screened for BP, diabetes, and malnutrition</div>
+                <div className="text-gray-700 font-medium text-lg">People screened or reached through health activities</div>
               </div>
               <div className="text-center md:text-left">
                 <div className="text-5xl md:text-6xl font-bold text-ngo-orange mb-3">
@@ -116,7 +124,7 @@ const Home: React.FC = () => {
               Our Initiatives
             </div>
             <h2 className="text-4xl font-bold text-gray-900">Impact in Action</h2>
-            <p className="mt-4 text-xl text-gray-600">Real stories of change from our villages.</p>
+            <p className="mt-4 text-xl text-gray-600">Every initiative begins with a real need identified by villagers and local partners.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[300px]">
@@ -241,37 +249,33 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
               <h2 className="text-3xl md:text-5xl font-bold text-white max-w-2xl leading-tight">
-                Let The Numbers Speak For Themselves
+                Our Reach
               </h2>
               <Link to="/volunteer" className="bg-white text-gray-900 font-semibold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors shadow-md">
                 Read More
               </Link>
            </div>
            
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="border border-white/50 rounded-2xl p-8 flex flex-col h-full bg-white/5 transition-colors hover:bg-white/10">
                  <p className="text-white text-lg leading-relaxed flex-1">
-                   "I decided to contribute my time and resources to the tuition program. Seeing the students grow in confidence and knowledge is the greatest reward. It's real, visible change."
+                   9,500+ people screened or reached through health activities
                  </p>
-                 <div className="mt-6 text-white/90 font-medium">
-                   Sarah M.
-                 </div>
               </div>
               <div className="border border-white/50 rounded-2xl p-8 flex flex-col h-full bg-white/5 transition-colors hover:bg-white/10">
                  <p className="text-white text-lg leading-relaxed flex-1">
-                   "My Village My Dream has my full support. Contributing to the mobile clinics ensures healthcare reaches the unreached. Witnessing the relief during the health camps is a powerful reminder of why we serve."
+                   2,000+ students reached through breathing, focus, and wellness programs
                  </p>
-                 <div className="mt-6 text-white/90 font-medium">
-                   Mark T.
-                 </div>
               </div>
               <div className="border border-white/50 rounded-2xl p-8 flex flex-col h-full bg-white/5 transition-colors hover:bg-white/10">
                  <p className="text-white text-lg leading-relaxed flex-1">
-                   "Joining this mission was about building a stronger community. Their commitment to inclusive education for children with special needs proves that every contribution helps build a better village."
+                   10+ villages connected through active initiatives
                  </p>
-                 <div className="mt-6 text-white/90 font-medium">
-                   Emma R.
-                 </div>
+              </div>
+              <div className="border border-white/50 rounded-2xl p-8 flex flex-col h-full bg-white/5 transition-colors hover:bg-white/10">
+                 <p className="text-white text-lg leading-relaxed flex-1">
+                   13 active or developing program areas across health, wellness, inclusion, sanitation, addiction prevention, livelihoods, and community engagement
+                 </p>
               </div>
            </div>
         </div>
@@ -295,10 +299,7 @@ const Home: React.FC = () => {
                 <h3 className="text-3xl font-bold text-gray-900 mb-6">Dr. Nikhil Gohokar</h3>
                 <div className="text-gray-600 text-lg leading-relaxed space-y-4">
                   <p>
-                    Dr. Nikhil Gohokar is a visionary leader with a passion for social change. He has established a core team to manage grants and expand programs in underserved villages affected by insurgency and farmer crises.
-                  </p>
-                  <p>
-                    His initiatives range from organizing joint injection camps for pain relief to launching tuition centers for village children.
+                    Dr. Nikhil Gohokar is a physician and social-impact leader with a deep connection to Vidarbha. Having witnessed the effects of limited healthcare access, undiagnosed chronic disease, childhood malnutrition, addiction, and economic hardship, he helped create a team dedicated to bridging the divide between rural Bharat and urban India.
                   </p>
                   <p className="font-medium text-gray-900 italic">
                     "Our dream is simple: To ensure that a child born in a village has the same opportunities to succeed as a child born in a city."
@@ -307,7 +308,7 @@ const Home: React.FC = () => {
                 
                 <div className="mt-8">
                   <a 
-                    href="https://example.com/dr-nikhil-gohokar" 
+                    href="https://blessingsmedical.org/about/nikhil" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center px-6 py-3 border border-ngo-maroon text-base font-bold rounded-full text-ngo-maroon bg-white hover:bg-ngo-maroon hover:text-white transition-all duration-300 shadow-sm"

@@ -24,6 +24,13 @@ const volunteerTypes = [
     location: "All districts"
   },
   {
+    icon: <Stethoscope size={24} />,
+    title: "Health Screening and Education Support",
+    commitment: "Flexible, camp-based",
+    description: "Volunteers may help with participant registration, crowd flow, organizing screening stations, recording nonclinical program information, preparing educational materials, distributing approved health handouts, helping families understand where to go next, coordinating follow-up reminders, supporting WhatsApp education, and organizing nutrition and sanitation demonstrations.",
+    location: "Chandrapur & Yavatmal"
+  },
+  {
     icon: <Smartphone size={24} />,
     title: "Remote / Digital",
     commitment: "Flexible, remote",
@@ -96,6 +103,12 @@ const Volunteer: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="mt-6 flex items-start gap-3 bg-orange-50 border border-orange-100 rounded-xl p-5">
+            <Stethoscope size={18} className="text-ngo-maroon mt-0.5 flex-shrink-0" />
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Blood-pressure measurement, blood-sugar testing, child-growth assessment, interpretation of results, medical advice, and clinical procedures must be performed or supervised by appropriately trained and authorized personnel.
+            </p>
           </div>
         </div>
 

@@ -34,7 +34,7 @@ const programs: ProgramData[] = [
   {
     id: 2,
     title: "Health Education & Screening Drive",
-    description: "An educational session was organized for the villagers of Pandharkawada to help them better understand healthy lifestyle choices and disease prevention. Blood pressure and blood sugar screenings were conducted, and we addressed their health-related questions. It was a meaningful opportunity to promote awareness and preventive care within the community.",
+    description: "An educational session was organized for the villagers of Pandharkawada to help them better understand healthy lifestyle choices and disease prevention. This included Blood Pressure, Diabetes and Malnutrition Screening combined with Health Education and Follow-Up Guidance, and we addressed their health-related questions. It was a meaningful opportunity to promote awareness and preventive care within the community.",
     images: [
       "images/programs/screening.jpg",
       "images/gallery/screening/1.jpg",
@@ -369,8 +369,9 @@ const Programs: React.FC = () => {
             Our Work in Action
           </div>
           <h1 className="font-serif text-4xl font-bold text-gray-900 sm:text-5xl">Our Programs</h1>
+          <p className="mt-3 text-lg font-semibold text-ngo-maroon">Programs built around real village needs.</p>
           <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-            16 active initiatives across healthcare, education, addiction prevention, women's health, and community engagement — each one born from a real need in the villages we serve.
+            Our programs span preventive healthcare, nutrition, student wellness, addiction prevention, women's health, sanitation, inclusion, livelihoods, and community engagement. Each initiative is designed to be practical, locally relevant, respectful, prevention-focused, partnership-based, and capable of continuing through local involvement.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mt-8">
             {categories.map(cat => (

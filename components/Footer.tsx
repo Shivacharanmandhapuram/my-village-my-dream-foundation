@@ -14,8 +14,9 @@ const Footer: React.FC = () => {
               <img loading="lazy" src="images/logo.png" alt="Logo" className="w-10 h-10 object-contain" />
               <span className="font-bold text-xl text-white">My Village My Dream</span>
             </div>
+            <p className="text-ngo-orange font-semibold text-sm mb-2">Connecting Bharat to India</p>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Transforming rural villages into self-reliant communities through healthcare, education, addiction prevention, and wellness programs across Maharashtra.
+              Empowering villages through preventive health screening, wellness education, addiction prevention and recovery support, sanitation, nutrition, inclusion, livelihood development, and direct community outreach.
             </p>
             <div className="flex gap-4">
               <a href="https://www.facebook.com/profile.php?id=61577594464613" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-gray-800 hover:bg-ngo-orange rounded-full text-gray-400 hover:text-white transition-all duration-300">
@@ -41,6 +42,7 @@ const Footer: React.FC = () => {
                 { name: 'About Us', path: '/about' },
                 { name: 'Volunteer', path: '/volunteer' },
                 { name: 'Contribute', path: '/contribute' },
+                { name: 'Contact', path: '/about' },
               ].map((link) => (
                 <li key={link.name}>
                   <Link to={link.path} className="text-gray-400 hover:text-ngo-orange transition-colors text-sm">
@@ -58,20 +60,21 @@ const Footer: React.FC = () => {
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-ngo-orange mt-1 flex-shrink-0" />
                 <span className="text-gray-400 text-sm">
-                  AT POST KOTHARI, TH BALLARPUR<br />
-                  DIST CHANDRAPUR 442701<br />
-                  Maharashtra, India
+                  Opposite Government Hospital<br />
+                  Main Road<br />
+                  Chandrapur, Maharashtra 442401<br />
+                  India
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-ngo-orange flex-shrink-0" />
-                <a href="mailto:contact@myvillagemydream.org" className="text-gray-400 hover:text-ngo-orange transition-colors text-sm">
-                  contact@myvillagemydream.org
+                <a href="mailto:mvmdstaff@gmail.com" className="text-gray-400 hover:text-ngo-orange transition-colors text-sm">
+                  mvmdstaff@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-ngo-orange flex-shrink-0" />
-                <a href="tel:+919225520074" className="text-gray-400 hover:text-ngo-orange transition-colors text-sm">092255 20074</a>
+                <a href="tel:+919970681002" className="text-gray-400 hover:text-ngo-orange transition-colors text-sm">+91 99706 81002</a>
               </li>
             </ul>
           </div>
@@ -80,12 +83,11 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-sm font-bold text-white tracking-wider uppercase mb-6">Trust & Transparency</h3>
             <div className="space-y-3 text-sm text-gray-400">
-              <p>Registered under the Indian Trust Act</p>
-              <p>Eligible for 80G Tax Exemption</p>
-              <p>12A Registration: Active</p>
+              <p>Registration: MAHA/699/2025</p>
+              <p>F-17219 (CDP)</p>
               <div className="pt-4 border-t border-gray-800 mt-4">
                 <p className="text-gray-500 text-xs leading-relaxed">
-                  100% of your contributions go directly to our village programs. We maintain complete financial transparency and publish annual reports.
+                  My Village My Dream is committed to responsible governance, respectful community partnerships, accurate reporting, and transparent use of resources.
                 </p>
               </div>
             </div>
@@ -101,7 +103,7 @@ const Footer: React.FC = () => {
               Privacy Policy
             </Link>
             <p className="text-xs text-gray-600">
-              Made with purpose for rural India.
+              Connecting Bharat to India.
             </p>
           </div>
         </div>

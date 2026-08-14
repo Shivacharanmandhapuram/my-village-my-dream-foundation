@@ -78,6 +78,31 @@ const Contribute: React.FC = () => {
           </div>
         </div>
 
+        {/* Ways to Support */}
+        <div className="bg-white rounded-2xl shadow-sm border border-orange-100 p-8 mb-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-2">Ways to Support</h2>
+          <p className="text-gray-500 text-sm mb-6">Your contribution can back any of these village initiatives:</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+            {[
+              "Sponsor a blood-pressure and diabetes screening camp",
+              "Support child-growth and malnutrition screening",
+              "Fund nutrition and parent-education materials",
+              "Provide appropriate screening equipment",
+              "Support follow-up and referral coordination",
+              "Sponsor sanitation and safe-water education",
+              "Fund student wellness programs",
+              "Support addiction-prevention and recovery initiatives",
+              "Support inclusive education",
+              "Help launch livelihood programs"
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <CheckCircle size={18} className="text-ngo-teal mt-0.5 flex-shrink-0" />
+                <span className="text-gray-600 text-sm">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Form */}
         <div className="bg-white rounded-2xl shadow-sm border border-orange-100 overflow-hidden">
           <div className="p-8 sm:p-10">
@@ -154,15 +179,15 @@ const Contribute: React.FC = () => {
             <div className="flex items-start gap-3">
               <CheckCircle size={18} className="text-green-600 mt-0.5 flex-shrink-0" />
               <div>
-                <div className="font-semibold text-gray-900 text-sm">80G Tax Exemption</div>
-                <div className="text-gray-500 text-xs">50% tax deduction on your donation under Section 80G</div>
+                <div className="font-semibold text-gray-900 text-sm">Registered Organization</div>
+                <div className="text-gray-500 text-xs">Registration No. MAHA/699/2025 · F-17219 (CDP)</div>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle size={18} className="text-green-600 mt-0.5 flex-shrink-0" />
               <div>
-                <div className="font-semibold text-gray-900 text-sm">12A Registered</div>
-                <div className="text-gray-500 text-xs">Income tax exemption as a registered charitable trust</div>
+                <div className="font-semibold text-gray-900 text-sm">Contact & Address</div>
+                <div className="text-gray-500 text-xs">Opposite Government Hospital, Main Road, Chandrapur, Maharashtra 442401, India · mvmdstaff@gmail.com · +91 99706 81002</div>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -173,6 +198,9 @@ const Contribute: React.FC = () => {
               </div>
             </div>
           </div>
+          <p className="mt-6 text-xs text-gray-500 leading-relaxed border-t border-gray-100 pt-4">
+            My Village My Dream has not yet been certified under 12A or 80G. Those certifications should not be displayed or implied until formal approval has been received and verified.
+          </p>
         </div>
       </div>
     </div>

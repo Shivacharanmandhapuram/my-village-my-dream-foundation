@@ -9,12 +9,12 @@ const milestones = [
   { year: "2021", title: "Breathing Program Expansion", description: "Introduced Sudarshan Kriya and Pranayam programs for 2,000+ students in Yavatmal schools." },
   { year: "2023", title: "Anti-Addiction Campaign", description: "Partnered with schools to run addiction prevention sessions reaching children from 1st to 12th standard." },
   { year: "2024", title: "Navachetna Shibir Launch", description: "Organized community yoga and meditation camps in collaboration with the Art of Living." },
-  { year: "2025", title: "9,500+ Lives Touched", description: "Reached the milestone of screening 9,500+ villagers and expanding to 10+ active villages." },
+  { year: "2025", title: "9,500+ Lives Touched", description: "Reached 9,500+ people through health activities and expanded to 10+ active villages with 13 program areas." },
 ];
 
 const values = [
-  { icon: <Heart size={24} />, title: "Community First", description: "We believe sustainable progress begins within the village itself — led by its own people." },
-  { icon: <Shield size={24} />, title: "Prevention Over Cure", description: "From health screenings to addiction awareness, we focus on preventing problems before they start." },
+  { icon: <Heart size={24} />, title: "Community First", description: "My Village My Dream works with villagers—not simply for villagers. We identify needs together and develop programs that strengthen communities." },
+  { icon: <Shield size={24} />, title: "Prevention Over Cure", description: "From health screenings to addiction awareness, we focus on identifying risks early and sharing practical knowledge before complications develop." },
   { icon: <BookOpen size={24} />, title: "Education as Foundation", description: "Every child deserves quality education regardless of where they are born." },
   { icon: <Users size={24} />, title: "Inclusive Impact", description: "Our programs serve everyone — from special needs children to elderly community members." },
 ];
@@ -32,16 +32,16 @@ const About: React.FC = () => {
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 max-w-4xl leading-tight">
-            We Are a Team Creating Change in Rural India
+            Local knowledge. Shared responsibility. Lasting change.
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
             <div className="text-gray-600 text-lg leading-relaxed">
               <p className="mb-4">
-                My Village My Dream Foundation was born from a simple observation: the children of rural India deserve the same opportunities as those born in cities. Founded by Dr. Nikhil Gohokar, we work at the grassroots level in Vidarbha's villages — areas affected by farmer crises and insurgency — to bridge the urban-rural divide through healthcare, education, and community wellness.
+                My Village My Dream is a registered community-led rural development organization based in Chandrapur, Maharashtra.
               </p>
               <p>
-                Our team consists of local changemakers, youth leaders, educators, Ayurvedic practitioners, and volunteers who understand village life because they live it. We don't impose solutions from outside — we build capacity from within.
+                We work with villagers, healthcare professionals, local leaders, youth, volunteers, schools, treatment centers, and partner organizations to develop practical programs in preventive health, wellness, sanitation, addiction prevention, inclusion, livelihoods, and community development.
               </p>
             </div>
             <div className="text-gray-800 text-xl font-medium leading-relaxed border-l-4 border-ngo-orange pl-6">
@@ -59,7 +59,7 @@ const About: React.FC = () => {
                 <h3 className="text-2xl font-bold text-gray-900">Our Mission</h3>
               </div>
               <p className="text-gray-600 text-lg leading-relaxed">
-                To transform rural villages into self-reliant communities by providing accessible healthcare, quality education, addiction prevention, and wellness programs — ensuring that no villager is left behind due to geography or poverty.
+                To empower villages to create practical, community-owned solutions that improve health, nutrition, wellness, sanitation, inclusion, livelihoods, and social development.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-orange-100">
@@ -137,13 +137,10 @@ const About: React.FC = () => {
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Dr. Nikhil Gohokar</h2>
                 <div className="text-gray-600 text-lg leading-relaxed space-y-4">
                   <p>
-                    Dr. Nikhil Gohokar is a visionary leader with a deep personal connection to rural Maharashtra. Having witnessed firsthand the struggles of farming communities — the lack of basic healthcare, the cycle of addiction, the educational gaps — he dedicated his career to bridging the urban-rural divide.
+                    Dr. Nikhil Gohokar is a physician and social-impact leader with a deep connection to Vidarbha. Having witnessed the effects of limited healthcare access, undiagnosed chronic disease, childhood malnutrition, addiction, and economic hardship, he helped create a team dedicated to bridging the divide between rural Bharat and urban India.
                   </p>
                   <p>
-                    With a background in medicine and global healthcare experience, Dr. Gohokar brings a unique approach: combining modern medical practices with community-driven solutions. His "ER Can Wait" presentation at the Massleague conference was recognized as a 'Great Session', underlining his philosophy that primary prevention in villages saves lives more effectively than emergency intervention in cities.
-                  </p>
-                  <p>
-                    Under his leadership, the foundation has established a core team managing grants and expanding programs across Chandrapur, Yavatmal, and Nagpur districts — from joint injection camps for the elderly to Sudarshan Kriya for school children.
+                    His healthcare philosophy emphasizes prevention, early identification, strong primary care, and practical lifestyle improvement. That same philosophy guides My Village My Dream: identify risks early, share useful knowledge, connect families with appropriate care, and build systems that continue beyond a single event.
                   </p>
                   <p className="font-medium text-gray-900 italic text-xl">
                     "Our dream is simple: To ensure that a child born in a village has the same opportunities to succeed as a child born in a city. We are building that bridge, one village at a time."
@@ -174,19 +171,19 @@ const About: React.FC = () => {
               </h3>
               <div className="space-y-4 text-gray-700 text-lg">
                 <div className="flex justify-between border-b border-orange-200 pb-2">
-                  <span className="font-semibold">Registered NGO:</span>
-                  <span>Section 8 Company</span>
+                  <span className="font-semibold">Registration:</span>
+                  <span>MAHA/699/2025</span>
                 </div>
                 <div className="flex justify-between border-b border-orange-200 pb-2">
-                  <span className="font-semibold">80G Status:</span>
-                  <span className="text-ngo-teal font-bold">Approved</span>
+                  <span className="font-semibold">Registration No.:</span>
+                  <span>F-17219 (CDP)</span>
                 </div>
                 <div className="flex justify-between border-b border-orange-200 pb-2">
-                  <span className="font-semibold">12A Status:</span>
-                  <span className="text-ngo-teal font-bold">Approved</span>
+                  <span className="font-semibold">Email:</span>
+                  <span>mvmdstaff@gmail.com</span>
                 </div>
                 <p className="text-sm text-gray-500 italic mt-4">
-                  * All donations are eligible for tax deductions in India under Section 80G of the Income Tax Act.
+                  Opposite Government Hospital, Main Road, Chandrapur, Maharashtra 442401, India
                 </p>
               </div>
             </div>
