@@ -8,6 +8,8 @@ export default defineConfig(() => {
       server: {
         port: 3000,
         host: '0.0.0.0',
+        // PGlite writes to .pglite/ on every query; watching it causes endless full reloads.
+        watch: { ignored: ['**/.pglite/**', '**/api/**'] },
       },
       plugins: [react(), devApi()],
       resolve: {

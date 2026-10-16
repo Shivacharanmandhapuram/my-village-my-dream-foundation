@@ -167,7 +167,7 @@ const ProductsTab: React.FC<{ catalog: CmsCatalog; reload: () => Promise<void> }
                     <p className="font-bold text-gray-900 truncate">{p.name_en} <span className="font-normal text-gray-500">{p.name_mr}</span></p>
                     <p className="text-xs text-gray-500">
                       {count(p.id)} villager{count(p.id) === 1 ? '' : 's'}
-                      {!p.image_url && ' · no photo yet'}
+                      {!p.image_url && ' · default photo'}
                       {!p.active && ' · hidden'}
                     </p>
                   </div>

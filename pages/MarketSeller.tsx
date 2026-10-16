@@ -35,13 +35,11 @@ const MarketSeller: React.FC = () => {
             <div className="flex-1 min-w-0">
               <div className="flex flex-wrap items-center gap-3">
                 <h1 className="text-3xl font-bold text-gray-900">{seller.name_en}</h1>
+                <RatingBadge rating={catalog.ratings[seller.id]} />
                 {seller.featured && <FeaturedBadge />}
               </div>
               {seller.name_mr && <p className="text-lg text-gray-500">{seller.name_mr}</p>}
-              <div className="flex flex-wrap items-center gap-x-5 gap-y-1 mt-3">
-                <RatingBadge rating={catalog.ratings[seller.id]} />
-                {seller.village && <span className="inline-flex items-center gap-1 text-sm text-gray-500"><MapPin size={14} /> {seller.village}</span>}
-              </div>
+              {seller.village && <span className="inline-flex items-center gap-1 text-sm text-gray-500 mt-2"><MapPin size={14} /> {seller.village}</span>}
               {seller.about && <p className="mt-4 text-gray-700 leading-relaxed">{seller.about}</p>}
               <div className="mt-5"><ContactButtons seller={seller} /></div>
             </div>

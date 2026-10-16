@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, MessageCircle, Star, MapPin, Award, Loader2, CheckCircle2 } from 'lucide-react';
 import {
@@ -22,24 +22,42 @@ export const Stars: React.FC<{ value: number; size?: number }> = ({ value, size 
 export const RatingBadge: React.FC<{ rating?: Rating }> = ({ rating }) =>
   rating ? (
     <span className="inline-flex items-center gap-1.5 text-sm text-gray-700">
-      <Stars value={rating.avg} size={14} />
+      <Stars value={rating.avg} size={16} />
       <span className="font-semibold">{rating.avg.toFixed(1)}</span>
       <span className="text-gray-400">({rating.count})</span>
     </span>
   ) : (
-    <span className="text-sm text-gray-400">No reviews yet</span>
+    <span className="inline-flex items-center gap-1.5 text-sm text-gray-400">
+      <Stars value={0} size={16} />
+      <span>New</span>
+    </span>
   );
 
+// Photo priority: CMS upload → built-in photo (public/images/market/<id>.jpg) → emoji tile.
 export const ProductImage: React.FC<{ product: Product; className?: string; emojiSize?: string }> = ({
   product, className = '', emojiSize = 'text-6xl',
-}) =>
-  product.image_url ? (
-    <img src={product.image_url} alt={product.name_en} loading="lazy" className={`object-cover ${className}`} />
-  ) : (
-    <div className={`flex items-center justify-center bg-gradient-to-br ${tileColor(product.category_id)} ${className}`} aria-hidden="true">
-      <span className={`${emojiSize} drop-shadow-sm select-none`}>{product.emoji}</span>
+}) => {
+  const src = product.image_url ?? `/images/market/${product.id}.jpg`;
+  const [failed, setFailed] = useState(false);
+  useEffect(() => setFailed(false), [src]);
+  if (failed)
+    return (
+      <div className={`flex items-center justify-center bg-gradient-to-br ${tileColor(product.category_id)} ${className}`} aria-hidden="true">
+        <span className={`${emojiSize} drop-shadow-sm select-none`}>{product.emoji}</span>
+      </div>
+    );
+  return (
+    <div className={`relative overflow-hidden bg-ngo-warm-gray ${className}`}>
+      <img
+        src={src}
+        alt={product.name_en}
+        loading="lazy"
+        onError={() => setFailed(true)}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
     </div>
   );
+};
 
 export const ContactButtons: React.FC<{ seller: Seller; productName?: string; compact?: boolean }> = ({ seller, productName, compact }) => (
   <div className="flex flex-col gap-2">
@@ -194,15 +212,13 @@ export const SellerCard: React.FC<{
             <Link to={`/market/villager/${seller.id}`} className="text-lg font-bold text-gray-900 hover:text-ngo-maroon">
               {seller.name_en}
             </Link>
+            <RatingBadge rating={rating} />
             {seller.featured && <FeaturedBadge />}
           </div>
           {seller.name_mr && <p className="text-gray-500 text-sm">{seller.name_mr}</p>}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2">
-            <RatingBadge rating={rating} />
-            {seller.village && (
-              <span className="inline-flex items-center gap-1 text-sm text-gray-500"><MapPin size={14} /> {seller.village}</span>
-            )}
-          </div>
+          {seller.village && (
+            <span className="inline-flex items-center gap-1 text-sm text-gray-500 mt-1"><MapPin size={14} /> {seller.village}</span>
+          )}
         </div>
       </div>
       <ContactButtons seller={seller} productName={product?.name_en} compact />

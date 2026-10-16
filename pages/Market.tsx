@@ -9,7 +9,7 @@ const ProductCard: React.FC<{ product: Product; sellerCount: number }> = ({ prod
     to={`/market/${product.id}`}
     className="group bg-white rounded-2xl overflow-hidden border border-orange-50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex flex-col"
   >
-    <ProductImage product={product} className="w-full aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-300" />
+    <ProductImage product={product} className="w-full aspect-[4/3]" />
     <div className="p-4 flex-1 flex flex-col">
       <h3 className="font-bold text-gray-900 group-hover:text-ngo-maroon transition-colors">{product.name_en}</h3>
       <p className="text-sm text-gray-500">{product.name_mr}</p>
@@ -115,7 +115,7 @@ const Market: React.FC = () => {
       </section>
 
       {/* Category chips */}
-      <div className="sticky top-[116px] z-30 bg-ngo-beige/95 backdrop-blur border-b border-orange-50">
+      <div className="md:sticky md:top-[116px] z-30 bg-ngo-beige/95 backdrop-blur border-b border-orange-50">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex gap-2 overflow-x-auto">
           {[{ id: '', name_en: 'All', emoji: '🛒' }, ...catalog.categories].map((c) => (
             <button
