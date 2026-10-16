@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, Package, ListOrdered, MessageSquare, LogOut, ExternalLink, Lock } from 'lucide-react';
+import { Users, Package, ListOrdered, MessageSquare, LogOut, ExternalLink, Lock, Loader2 } from 'lucide-react';
 import { api, loadCatalog, type CmsCatalog } from '../lib/market';
 import { PageState } from '../components/market/MarketUI';
 import SellersTab from '../components/admin/SellersTab';
@@ -8,8 +8,7 @@ import ProductsTab from '../components/admin/ProductsTab';
 import PriorityTab from '../components/admin/PriorityTab';
 import ReviewsTab from '../components/admin/ReviewsTab';
 
-// Sign-in is handled by Azure Static Web Apps. Admins are invited with the "admin" role.
-interface Principal { userDetails: string; userRoles: string[] }
+// Sign-in: one shared password (set as the CMS_PASSWORD app setting) → session cookie for 30 days.
 
 const TABS = [
   { id: 'villagers', label: 'Villagers', icon: Users },
@@ -19,34 +18,52 @@ const TABS = [
 ] as const;
 type TabId = (typeof TABS)[number]['id'];
 
-const SignIn: React.FC<{ principal: Principal | null }> = ({ principal }) => (
-  <div className="min-h-[70vh] flex items-center justify-center px-4">
-    <div className="bg-white rounded-2xl border border-orange-50 p-8 max-w-md w-full text-center shadow-sm">
-      <div className="inline-flex p-3 rounded-full bg-orange-50 text-ngo-maroon mb-4"><Lock size={28} /></div>
-      <h1 className="text-2xl font-bold text-gray-900">Village Market admin</h1>
-      {principal ? (
-        <>
-          <p className="mt-3 text-gray-600 text-sm">
-            You're signed in as <span className="font-semibold">{principal.userDetails}</span>, but this account hasn't been given admin access.
-            Ask the site owner to invite you.
-          </p>
-          <a href="/.auth/logout?post_logout_redirect_uri=/admin" className="mt-6 inline-block text-sm font-bold text-ngo-maroon hover:underline">Sign in with a different account</a>
-        </>
-      ) : (
-        <>
-          <p className="mt-3 text-gray-600 text-sm">Sign in to add villagers, manage products and moderate reviews.</p>
-          <div className="mt-6 flex flex-col gap-3">
-            <a href="/.auth/login/aad?post_login_redirect_uri=/admin" className="px-5 py-3 rounded-full bg-ngo-maroon text-white font-bold hover:bg-red-900">Sign in with Microsoft</a>
-            <a href="/.auth/login/github?post_login_redirect_uri=/admin" className="px-5 py-3 rounded-full border border-gray-300 text-gray-700 font-bold hover:bg-gray-50">Sign in with GitHub</a>
-          </div>
-        </>
-      )}
+const SignIn: React.FC<{ onSignedIn: () => void }> = ({ onSignedIn }) => {
+  const [password, setPassword] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    setError('');
+    try {
+      await api('/cms/login', { method: 'POST', body: { password } });
+      onSignedIn();
+    } catch (err) {
+      setError((err as Error).message);
+      setBusy(false);
+    }
+  };
+  return (
+    <div className="min-h-[70vh] flex items-center justify-center px-4">
+      <form onSubmit={submit} className="bg-white rounded-2xl border border-orange-50 p-8 max-w-sm w-full text-center shadow-sm">
+        <div className="inline-flex p-3 rounded-full bg-orange-50 text-ngo-maroon mb-4"><Lock size={28} /></div>
+        <h1 className="text-2xl font-bold text-gray-900">Village Market admin</h1>
+        <p className="mt-2 text-gray-600 text-sm">Enter the admin password to manage villagers, products and reviews.</p>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoFocus
+          autoComplete="current-password"
+          placeholder="Password"
+          aria-label="Admin password"
+          className="mt-6 w-full px-4 py-3 rounded-xl border border-gray-200 text-center focus:border-ngo-orange focus:ring-2 focus:ring-orange-100 outline-none"
+        />
+        {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+        <button
+          disabled={busy || !password}
+          className="mt-4 w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-ngo-maroon text-white font-bold hover:bg-red-900 disabled:opacity-50"
+        >
+          {busy && <Loader2 size={16} className="animate-spin" />} Sign in
+        </button>
+      </form>
     </div>
-  </div>
-);
+  );
+};
 
 const Admin: React.FC = () => {
-  const [principal, setPrincipal] = useState<Principal | null | undefined>(undefined);
+  const [signedIn, setSignedIn] = useState<boolean | undefined>(undefined);
   const [catalog, setCatalog] = useState<CmsCatalog | null>(null);
   const [error, setError] = useState('');
   const [tab, setTab] = useState<TabId>('villagers');
@@ -61,19 +78,23 @@ const Admin: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/.auth/me')
-      .then((r) => r.json())
-      .then((d) => setPrincipal(d.clientPrincipal ?? null))
-      .catch(() => setPrincipal(null));
+    api<{ admin: boolean }>('/cms/session')
+      .then((d) => setSignedIn(d.admin))
+      .catch(() => setSignedIn(false));
   }, []);
 
-  const isAdmin = !!principal?.userRoles.includes('admin');
   useEffect(() => {
-    if (isAdmin) reload();
-  }, [isAdmin, reload]);
+    if (signedIn) reload();
+  }, [signedIn, reload]);
 
-  if (principal === undefined) return <PageState loading />;
-  if (!isAdmin) return <SignIn principal={principal} />;
+  const signOut = async () => {
+    await api('/cms/logout', { method: 'POST' }).catch(() => {});
+    setCatalog(null);
+    setSignedIn(false);
+  };
+
+  if (signedIn === undefined) return <PageState loading />;
+  if (!signedIn) return <SignIn onSignedIn={() => setSignedIn(true)} />;
   if (!catalog) return <PageState loading={!error} error={error || undefined} />;
 
   const listed = catalog.sellers.filter((s) => s.active).length;
@@ -91,8 +112,7 @@ const Admin: React.FC = () => {
             </div>
             <div className="flex items-center gap-4 text-sm">
               <Link to="/market" className="inline-flex items-center gap-1.5 font-semibold text-gray-600 hover:text-ngo-maroon"><ExternalLink size={15} /> View market</Link>
-              <span className="text-gray-400 hidden sm:inline">{principal!.userDetails}</span>
-              <a href="/.auth/logout?post_logout_redirect_uri=/" className="inline-flex items-center gap-1.5 font-semibold text-gray-600 hover:text-ngo-maroon"><LogOut size={15} /> Sign out</a>
+              <button onClick={signOut} className="inline-flex items-center gap-1.5 font-semibold text-gray-600 hover:text-ngo-maroon"><LogOut size={15} /> Sign out</button>
             </div>
           </div>
           <nav className="mt-6 flex gap-1 overflow-x-auto" aria-label="Admin sections">

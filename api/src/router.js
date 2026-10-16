@@ -7,13 +7,16 @@
 //
 // Public:  GET  /market/catalog            GET  /market/reviews?seller=&product=
 //          POST /market/reviews            GET  /market/images/:id
-// CMS (Static Web Apps role "admin" required — also enforced in staticwebapp.config.json):
+// CMS login: POST /cms/login {password}   POST /cms/logout   GET /cms/session
+// CMS (signed session cookie required, see auth.js):
 //          GET  /cms/catalog               PUT  /cms/sellers/:id     POST /cms/sellers     DELETE /cms/sellers/:id
 //          PUT  /cms/products/:id          POST /cms/products        DELETE /cms/products/:id
 //          PUT  /cms/categories/:id        POST /cms/categories
 //          PUT  /cms/order/:productId      PATCH /cms/listings
 //          GET  /cms/reviews               PATCH /cms/reviews/:id    DELETE /cms/reviews/:id
 //          POST /cms/images
+
+import { isAdmin, login, logout, clientIp } from './auth.js';
 
 const ok = (json, status = 200) => ({ status, json });
 const fail = (status, error) => ({ status, json: { error } });
@@ -32,17 +35,6 @@ const imageUrl = (v) => {
   const s = str(v, 500);
   return /^(\/api\/market\/images\/\d+|https:\/\/\S+)$/.test(s) ? s : null;
 };
-
-export function isAdmin(headers) {
-  const raw = headers['x-ms-client-principal'];
-  if (!raw) return false;
-  try {
-    const p = JSON.parse(Buffer.from(raw, 'base64').toString('utf8'));
-    return Array.isArray(p.userRoles) && p.userRoles.includes('admin');
-  } catch {
-    return false;
-  }
-}
 
 // Best-effort throttle for anonymous review posting (per function instance).
 const recentPosts = new Map();
@@ -175,7 +167,7 @@ export async function handle(req, db) {
 
     if (method === 'POST' && resource === 'reviews') {
       if (str(b.website)) return ok({ ok: true }, 201); // honeypot: silently drop bots
-      const ip = String(req.headers['x-forwarded-for'] ?? 'local').split(',')[0].trim();
+      const ip = clientIp(req.headers);
       if (throttled(ip)) return fail(429, 'Too many reviews from this connection. Please try again later.');
       const rating = int(b.rating, 0);
       const author = str(b.author_name, 60);
@@ -208,7 +200,10 @@ export async function handle(req, db) {
 
   // ─── CMS ───
   if (area === 'cms') {
-    if (!isAdmin(req.headers)) return fail(403, 'Admin access required');
+    if (method === 'POST' && resource === 'login') return login(db, req.headers, b);
+    if (method === 'POST' && resource === 'logout') return logout();
+    if (method === 'GET' && resource === 'session') return ok({ admin: isAdmin(req.headers) });
+    if (!isAdmin(req.headers)) return fail(401, 'Please sign in');
 
     if (method === 'GET' && resource === 'catalog') {
       const data = await catalog(db, true);

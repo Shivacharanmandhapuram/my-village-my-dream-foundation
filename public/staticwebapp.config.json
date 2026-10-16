@@ -1,13 +1,7 @@
 {
   "routes": [
     {
-      "route": "/api/cms/*",
-      "allowedRoles": [
-        "admin"
-      ]
-    },
-    {
-      "route": "/.auth/login/twitter",
+      "route": "/.auth/login/*",
       "statusCode": 404
     }
   ],

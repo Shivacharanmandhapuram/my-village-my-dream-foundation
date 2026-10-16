@@ -1,5 +1,5 @@
-// Dev only: serves /api/* from api/src/router.js against an embedded Postgres (PGlite, stored in .pglite/),
-// and fakes Static Web Apps' /.auth endpoints so the CMS can be used locally as an admin.
+// Dev only: serves /api/* from api/src/router.js against an embedded Postgres (PGlite, stored in .pglite/).
+// The local CMS password is "admin" unless CMS_PASSWORD is set in your shell.
 import type { Plugin } from 'vite';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -21,9 +21,8 @@ export function devApi(): Plugin {
       };
     })());
 
-  const devPrincipal = Buffer.from(
-    JSON.stringify({ identityProvider: 'dev', userId: 'dev', userDetails: 'dev-admin@localhost', userRoles: ['anonymous', 'authenticated', 'admin'] })
-  ).toString('base64');
+  process.env.CMS_PASSWORD ??= 'admin';
+  process.env.CMS_SESSION_SECRET ??= 'local-dev-only';
 
   return {
     name: 'mvmd-dev-api',
@@ -32,15 +31,6 @@ export function devApi(): Plugin {
       server.middlewares.use(async (req, res, next) => {
         const url = new URL(req.url ?? '/', 'http://localhost');
 
-        if (url.pathname === '/.auth/me') {
-          res.setHeader('content-type', 'application/json');
-          return res.end(JSON.stringify({ clientPrincipal: JSON.parse(Buffer.from(devPrincipal, 'base64').toString()) }));
-        }
-        if (url.pathname.startsWith('/.auth/')) {
-          res.statusCode = 302;
-          res.setHeader('location', url.searchParams.get('post_login_redirect_uri') ?? url.searchParams.get('post_logout_redirect_uri') ?? '/');
-          return res.end();
-        }
         if (!url.pathname.startsWith('/api/')) return next();
 
         try {
@@ -54,7 +44,7 @@ export function devApi(): Plugin {
               path: url.pathname.replace(/^\/api/, ''),
               query: Object.fromEntries(url.searchParams),
               body: raw ? JSON.parse(raw) : null,
-              headers: { ...req.headers, 'x-ms-client-principal': devPrincipal },
+              headers: req.headers,
             },
             await getDb()
           );
