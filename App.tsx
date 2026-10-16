@@ -10,6 +10,10 @@ import About from './pages/About';
 import Contribute from './pages/Contribute';
 import Volunteer from './pages/Volunteer';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import Market from './pages/Market';
+import MarketProduct from './pages/MarketProduct';
+import MarketSeller from './pages/MarketSeller';
+import Admin from './pages/Admin';
 
 const App: React.FC = () => {
   return (
@@ -26,6 +30,10 @@ const App: React.FC = () => {
             <Route path="/contribute" element={<Contribute />} />
             <Route path="/volunteer" element={<Volunteer />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/market" element={<Market />} />
+            <Route path="/market/villager/:sellerId" element={<MarketSeller />} />
+            <Route path="/market/:productId" element={<MarketProduct />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
         <Footer />

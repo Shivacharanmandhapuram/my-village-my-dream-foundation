@@ -11,13 +11,14 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Programs', path: '/programs' },
+    { name: 'Market', path: '/market' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'Events', path: '/events' },
     { name: 'About', path: '/about' },
     { name: 'Volunteer', path: '/volunteer' },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => location.pathname === path || (path !== '/' && location.pathname.startsWith(`${path}/`));
 
   return (
     <div className="flex flex-col sticky top-0 z-50">
@@ -35,7 +36,7 @@ const Navbar: React.FC = () => {
               </Link>
             </div>
 
-            <div className="hidden md:flex items-center space-x-6">
+            <div className="hidden xl:flex items-center space-x-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -58,7 +59,7 @@ const Navbar: React.FC = () => {
               </Link>
             </div>
 
-            <div className="flex items-center md:hidden">
+            <div className="flex items-center xl:hidden">
               <button
                 onClick={toggleMenu}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-ngo-maroon focus:outline-none"
@@ -70,7 +71,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {isOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100">
+          <div className="xl:hidden bg-white border-t border-gray-100">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navLinks.map((link) => (
                 <Link

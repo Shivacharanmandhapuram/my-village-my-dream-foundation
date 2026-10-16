@@ -1,5 +1,25 @@
 {
+  "routes": [
+    {
+      "route": "/api/cms/*",
+      "allowedRoles": [
+        "admin"
+      ]
+    },
+    {
+      "route": "/.auth/login/twitter",
+      "statusCode": 404
+    }
+  ],
   "navigationFallback": {
-    "rewrite": "/index.html"
+    "rewrite": "/index.html",
+    "exclude": [
+      "/images/*",
+      "/assets/*",
+      "/api/*"
+    ]
+  },
+  "platform": {
+    "apiRuntime": "node:20"
   }
 }

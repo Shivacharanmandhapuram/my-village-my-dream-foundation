@@ -1,0 +1,175 @@
+# Final villager product list (incl. Wardha additions), received Oct 2026.
+# Format:  "## Category EN / Category MR"  ->  "### Product EN / Product MR"  ->  "- Name MR / Name EN — phone[ / phone]"
+# Run `node scripts/build-seed.mjs` after editing to regenerate lib/market/seed.json and supabase/seed.sql.
+
+## Dairy Products / दुग्धजन्य पदार्थ
+
+### Milk / दूध
+- संतोष नामदेव उपासे / Santosh Namdeo Upase — 9356870976
+- बंडू नानाजी ताजणे / Bandu Nanaji Tajane — 8007350201
+- गजानन जित्राजी बदकी / Gajanan Jitraji Badaki — 9309188179
+- दादाजी लतारी लोडे / Dadaji Latari Lode — 9823448458
+- सुभाष रोगे / Subhash Roge — 9359423615
+- गणेश शामराव डवरे / Ganesh Shamrao Daware — 8767295171
+- नंदकिशोर धांडे / Nandakishor Dhande — 9021403718
+- रवी पारखी / Ravi Parkhi — 9529361316
+- बंडू भोयर / Bandu Bhoyar — 8766990981
+- विजय भोबाडे / Vijay Bhobade — 7498287412
+- विजय बांदुरकर / Vijay Bandurkar — 9112969440
+- संजय किसान ठावरी / Sanjay Kisan Thawari — 9673717024 / 9881947084
+
+### Curd / दही
+- संतोष नामदेव उपासे / Santosh Namdeo Upase — 9356870976
+- बंडू नानाजी ताजणे / Bandu Nanaji Tajane — 8007350201
+- गजानन जित्राजी बदकी / Gajanan Jitraji Badaki — 9309188179
+- दादाजी लतारी लोडे / Dadaji Latari Lode — 9823448458
+- सुभाष रोगे / Subhash Roge — 9359423615
+- गणेश शामराव डवरे / Ganesh Shamrao Daware — 8767295171
+- पंढरी पारखी / Pandhari Parkhi — 9130748421
+- बंडू भोयर / Bandu Bhoyar — 8766990981
+- संजय किसान ठावरी / Sanjay Kisan Thawari — 9673717024 / 9881947084
+- वैभव काळे / Vaibhav Kale — 9834979519
+
+### Butter / लोणी
+- गणेश शामराव डवरे / Ganesh Shamrao Daware — 8767295171
+- नंदकिशोर धांडे / Nandakishor Dhande — 9021403718
+- बंडू भोयर / Bandu Bhoyar — 8766990981
+- विजय बांदुरकर / Vijay Bandurkar — 9112969440
+- संजय किसान ठावरी / Sanjay Kisan Thawari — 9673717024 / 9881947084
+- वैभव काळे / Vaibhav Kale — 9834979519
+
+### Ghee / तूप
+- नंदकिशोर धांडे / Nandakishor Dhande — 9021403718
+- रवी पारखी / Ravi Parkhi — 9529361316
+
+## Grains, Pulses and Staples / धान्य, कडधान्य व इतर
+
+### Wheat / गहू
+- बंडू नानाजी ताजणे / Bandu Nanaji Tajane — 8007350201
+- सचिन उपासे / Sachin Upase — 7875137290
+- विलास पाझरे / Vilas Pazare — 9423412200
+- प्रियंका सूरज वाडखुरे / Priyanka Suraj Wadkhure — 8793397653
+- विकास वैद्य / Vikas Vaidya — 9688909594
+- विजय शंकर भोगकर / Vijay Shankar Bhogkar — 9067307493
+- दिनेश माणिकराव विधाते / Dinesh Manikrao Vidhate — 9657486925
+- प्रफुल्ल ठेंगणे / Prafull Thengane — 9657434202
+- किशोर बाबुराव वारारकर / Kishor Baburao Wararkar — 9552012080
+
+### Wheat Flour / गहू आटा
+- प्रकाश कडूकर / Prakash Kadukar — 9623038924
+- लक्ष्मण मुकुंद रांदिवे / Lakshman Mukunda Randive — 9552631995
+
+### Rice / तांदूळ
+- रवी पारखी / Ravi Parkhi — 9529361316
+- शालिक रामचंद्र खानके / Shalik Ramchandra Khanake — 7709245178
+- विजय शंकर भोगकर / Vijay Shankar Bhogkar — 9067307493
+- दिनेश माणिकराव विधाते / Dinesh Manikrao Vidhate — 9657486925
+- सुरेश मारुती भोयर / Suresh Maruti Bhoyar — 8669262156
+- गुलाराम धांडे / Gularam Dhande — 9923488941
+- जयवंता गणपती धांडे / Jaywanta Ganapati Dhande — 8888456110
+- प्रफुल्ल ठेंगणे / Prafull Thengane — 9657434202
+- लक्ष्मण मुकुंद रांदिवे / Lakshman Mukunda Randive — 9552631995
+
+### Jowar / ज्वारी
+- विलास पाझरे / Vilas Pazare — 9423412200
+- विकास वैद्य / Vikas Vaidya — 9688909594
+
+### Chickpeas / चना
+- बंडू नानाजी ताजणे / Bandu Nanaji Tajane — 8007350201
+- सचिन उपासे / Sachin Upase — 7875137290
+- विलास पाझरे / Vilas Pazare — 9423412200
+- रवी पारखी / Ravi Parkhi — 9529361316
+- गुलाराम धांडे / Gularam Dhande — 9923488941
+- जयवंता गणपती धांडे / Jaywanta Ganapati Dhande — 8888456110
+- संजय किसान ठावरी / Sanjay Kisan Thawari — 9673717024 / 9881947084
+- प्रफुल्ल ठेंगणे / Prafull Thengane — 9657434202
+- किशोर बाबुराव वारारकर / Kishor Baburao Wararkar — 9552012080
+
+### Pigeon Peas / तूर
+- बंडू नानाजी ताजणे / Bandu Nanaji Tajane — 8007350201
+- सचिन उपासे / Sachin Upase — 7875137290
+- विलास पाझरे / Vilas Pazare — 9423412200
+- प्रियंका सूरज वाडखुरे / Priyanka Suraj Wadkhure — 8793397653
+- विजय बांदुरकर / Vijay Bandurkar — 9112969440
+- विजय शंकर भोगकर / Vijay Shankar Bhogkar — 9067307493
+- दिनेश माणिकराव विधाते / Dinesh Manikrao Vidhate — 9657486925
+- साहिल सुधाकर जेणेकर / Sahil Sudhakar Jenekar — 8010141968
+- योगिता मधुकर जेणेकर / Yogita Madhukar Jenekar — 9588699208
+- सुरेश गोपाळराव खानके / Suresh Gopalrao Khanake — 9766753255
+- शालिक प्रवास खानके / Shalik Prawas Khanake — 9767335809
+- गुलाराम धांडे / Gularam Dhande — 9923488941
+- जयवंता गणपती धांडे / Jaywanta Ganapati Dhande — 8888456110
+- संजय किसान ठावरी / Sanjay Kisan Thawari — 9673717024 / 9881947084
+- प्रफुल्ल ठेंगणे / Prafull Thengane — 9657434202
+- लक्ष्मण मुकुंद रांदिवे / Lakshman Mukunda Randive — 9552631995
+- किशोर बाबुराव वारारकर / Kishor Baburao Wararkar — 9552012080
+
+### Soybeans / सोयाबीन
+- सचिन उपासे / Sachin Upase — 7875137290
+- विलास पाझरे / Vilas Pazare — 9423412200
+- गुलाराम धांडे / Gularam Dhande — 9923488941
+
+### Mung Beans / मूग
+- प्रफुल्ल ठेंगणे / Prafull Thengane — 9657434202
+
+### Pulses / डाळी
+- लक्ष्मण मुकुंद रांदिवे / Lakshman Mukunda Randive — 9552631995
+
+## Fresh Produce / भाजीपाला
+
+### Vegetables / भाजीपाला
+- विमल नथुजी डवरे / Vimal Nathuji Daware — 9850651913
+- विलास पाझरे / Vilas Pazare — 9423412200
+- नंदकिशोर धांडे / Nandakishor Dhande — 9021403718
+- विजय भोबाडे / Vijay Bhobade — 7498287412
+- प्रफुल्ल ठेंगणे / Prafull Thengane — 9657434202
+- किशोर बाबुराव वारारकर / Kishor Baburao Wararkar — 9552012080
+
+## Home-made Foods and Spices / घरगुती पदार्थ व मसाले
+
+### Papad / पापड
+- अर्चना घनश्याम टिपले / Archana Ghanshyam Tiple — 8999157801
+- श्रुती रमण पाहनपाटे / Shruti Raman Pahanpate — 9763958081
+- मनीषा बरडे / नेहा भोयर / Manisha Barde / Neha Bhoyar — 8086247658
+
+### Chips / चिप्स
+- मनीषा बरडे / नेहा भोयर / Manisha Barde / Neha Bhoyar — 8086247658
+
+### Chivda / चिवडा
+- उमेश गुरनुळे / Umesh Gurnule — 9373497274
+- मंगल उईके / Mangal Uike — 9307954975
+
+### Cake / केक
+- आकाळा देशमुख / Aakala Deshmukh — 7620815983
+
+### Turmeric / हळद
+- विकास वैद्य / Vikas Vaidya — 9688909594
+
+### Red Chilli Powder / लाल तिखट
+- प्रकाश कडूकर / Prakash Kadukar — 9623038924
+- लक्ष्मण मुकुंद रांदिवे / Lakshman Mukunda Randive — 9552631995
+
+### Fenugreek / मेथी
+- विकास वैद्य / Vikas Vaidya — 9688909594
+
+## Clothing, Tailoring and Crafts / कपडे, शिवणकाम व हस्तकला
+
+### Clothes / कपडे
+- अर्चना घनश्याम टिपले / Archana Ghanshyam Tiple — 8999157801
+
+### Tailoring / शिवणकाम
+- साई रमेश सोनटक्के / Sai Ramesh Sonatakke — 9309125911
+- अर्चना घनश्याम टिपले / Archana Ghanshyam Tiple — 8999157801
+- पोर्णिमा दिनेश गिरडकर / Pornima Dinesh Giradkar — 9970321245
+
+### Blouse Stitching / ब्लाउज शिवणकाम
+- विमल नथुजी डवरे / Vimal Nathuji Daware — 9850651913
+- पोर्णिमा दिनेश गिरडकर / Pornima Dinesh Giradkar — 9970321245
+
+### Deity Idols / देवी मूर्ती
+- साई रमेश सोनटक्के / Sai Ramesh Sonatakke — 9309125911
+
+## Services / सेवा
+
+### Vehicle Repair / वाहन दुरुस्ती
+- गणेश झोडे / Ganesh Zode — 8390173816
