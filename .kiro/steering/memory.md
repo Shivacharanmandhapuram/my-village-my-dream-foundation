@@ -14,7 +14,8 @@
 
 ## Decisions
 - 2026-10-16: DB = new database `mvmd` on existing Azure Postgres flexible server `hragent-db` (rg `hragent-rg`, Central US). No extra cost.
-- 2026-10-16: Hosting = new Azure Static Web App (free tier), resource group `mvmd-rg`. CMS login = SWA built-in auth, role `admin` by invitation.
+- 2026-10-16: Hosting = new Azure Static Web App (free tier), resource group `mvmd-rg`.
+- 2026-10-16: CMS login = ONE shared password (user doesn't want Microsoft/GitHub sign-in). App settings CMS_PASSWORD (user sets it) + CMS_SESSION_SECRET (random). Lockout 5/IP, 30 total per 15 min. Built-in /.auth/login providers return 404. Local dev password: admin.
 - Images stored in Postgres (`images` table), not Blob Storage — keeps it to one Azure resource.
 - Product images are emoji tiles until real photos are uploaded via CMS → Products.
 
@@ -28,3 +29,4 @@
 - 2026-10-16 — Committed/pushed, created mvmd-rg + mvmd-site, deployed site + API. DB step blocked on firewall approval.
 - 2026-10-16 — DB created + seeded, DATABASE_URL set, temp firewall rule removed. Live market verified (milk page, 12 villagers).
 - 2026-10-16 — Added 26 product photos (Unsplash/Pexels, credits db/photo-credits.md) + stars beside villager names; redeployed (0119df1). Client feedback from Dr. Nikhil. Weakest photos still: jowar (mixed grains), chivda (sev namkeen), blouse-stitching (generic tailor) — swap via CMS if real photos arrive.
+- 2026-10-16 — Switched CMS to shared-password login, deployed. GitHub auto-deploy workflow committed but push blocked until `gh auth refresh -s workflow` succeeds; 3+ commits waiting locally.
