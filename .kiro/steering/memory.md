@@ -27,3 +27,4 @@
 - 2026-10-16 — Built Village Market + CMS + Azure Functions API; verified locally (reviews, priority, recommended, add villager, mobile).
 - 2026-10-16 — Committed/pushed, created mvmd-rg + mvmd-site, deployed site + API. DB step blocked on firewall approval.
 - 2026-10-16 — DB created + seeded, DATABASE_URL set, temp firewall rule removed. Live market verified (milk page, 12 villagers).
+- 2026-10-16 — Added 26 product photos (Unsplash/Pexels, credits db/photo-credits.md) + stars beside villager names; redeployed (0119df1). Client feedback from Dr. Nikhil. Weakest photos still: jowar (mixed grains), chivda (sev namkeen), blouse-stitching (generic tailor) — swap via CMS if real photos arrive.
