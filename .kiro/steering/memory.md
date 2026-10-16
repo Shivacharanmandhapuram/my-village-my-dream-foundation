@@ -4,7 +4,12 @@
 - Village Market built locally (2026-10-16): /#/market, product pages, villager pages, reviews, CMS at /admin
   (villagers add/edit/unlist, recommended pin, per-product priority order, products/categories, review hide/delete, photo upload).
 - Seed: 6 categories, 26 products, 42 villagers, 108 listings from the client's final list incl. Wardha additions (`db/seed-source.txt`).
-- Not yet committed / deployed.
+- Committed + pushed 08f0ce5 to main (2026-10-16).
+- Deployed to SWA `mvmd-site` (rg `mvmd-rg`, centralus, Free): https://agreeable-river-0f331ff10.1.azurestaticapps.net
+  Deployed with `swa deploy ./dist --api-location ./api` (no GitHub Actions link yet).
+- BLOCKED: `mvmd` DB not created yet — hragent-db firewall doesn't allow this Mac's IP; adding a temp rule needs the user's OK.
+  Until then /api/market/* returns 500 (no DATABASE_URL app setting).
+- Admin invite (aad, shivacharanmandhapuram@gmail.com, role admin) generated 2026-10-16, expires 2026-10-23.
 
 ## Decisions
 - 2026-10-16: DB = new database `mvmd` on existing Azure Postgres flexible server `hragent-db` (rg `hragent-rg`, Central US). No extra cost.
@@ -13,9 +18,10 @@
 - Product images are emoji tiles until real photos are uploaded via CMS → Products.
 
 ## Next
-- [ ] Create SWA + `mvmd` DB, set DATABASE_URL, run scripts/db-setup.mjs, deploy, invite admins.
+- [ ] Temp firewall rule → create role `mvmd_app` + DB `mvmd` (owner mvmd_app) → set DATABASE_URL on mvmd-site → `node scripts/db-setup.mjs` → remove temp rule.
 - [ ] Get real product photos (or approve sourcing free-licence ones) and villages for each seller.
-- [ ] Commit + push.
+- [ ] Optional: link mvmd-site to GitHub for auto-deploy on push; custom domain.
 
 ## Session log
 - 2026-10-16 — Built Village Market + CMS + Azure Functions API; verified locally (reviews, priority, recommended, add villager, mobile).
+- 2026-10-16 — Committed/pushed, created mvmd-rg + mvmd-site, deployed site + API. DB step blocked on firewall approval.
