@@ -65,7 +65,7 @@ export const ContactButtons: React.FC<{ seller: Seller; productName?: string; co
       <div key={p} className="flex flex-wrap items-center gap-2">
         <a
           href={telLink(p)}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-ngo-maroon text-white text-sm font-bold hover:bg-red-900 transition-colors"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-mkt text-white text-sm font-bold hover:bg-mkt-dark transition-colors"
         >
           <Phone size={16} /> {formatPhone(p)}
         </a>
@@ -86,13 +86,13 @@ export const SellerAvatar: React.FC<{ seller: Seller; size?: string }> = ({ sell
   seller.photo_url ? (
     <img src={seller.photo_url} alt={seller.name_en} className={`${size} rounded-full object-cover flex-shrink-0`} />
   ) : (
-    <div className={`${size} rounded-full bg-orange-100 text-ngo-maroon font-bold flex items-center justify-center flex-shrink-0`} aria-hidden="true">
+    <div className={`${size} rounded-full bg-mkt-light text-mkt font-bold flex items-center justify-center flex-shrink-0`} aria-hidden="true">
       {seller.name_en.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('')}
     </div>
   );
 
 export const FeaturedBadge: React.FC = () => (
-  <span className="inline-flex items-center gap-1 text-xs font-bold text-ngo-teal bg-teal-50 px-2.5 py-1 rounded-full">
+  <span className="inline-flex items-center gap-1 text-xs font-bold text-mkt bg-mkt-light px-2.5 py-1 rounded-full">
     <Award size={12} /> Recommended
   </span>
 );
@@ -178,7 +178,7 @@ export const ReviewForm: React.FC<{ seller: Seller; productId?: string; onPosted
         required
         maxLength={60}
         placeholder="Your name"
-        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-ngo-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm"
+        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-mkt focus:ring-2 focus:ring-mkt-light outline-none text-sm"
       />
       <textarea
         value={comment}
@@ -186,7 +186,7 @@ export const ReviewForm: React.FC<{ seller: Seller; productId?: string; onPosted
         maxLength={1000}
         rows={3}
         placeholder="How was the product and the service? (optional)"
-        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-ngo-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm"
+        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-mkt focus:ring-2 focus:ring-mkt-light outline-none text-sm"
       />
       <input value={website} onChange={(e) => setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       {error && <p className="text-sm text-red-600">{error}</p>}
@@ -203,13 +203,13 @@ export const ReviewForm: React.FC<{ seller: Seller; productId?: string; onPosted
 export const SellerCard: React.FC<{
   seller: Seller; rating?: Rating; product?: Product; children?: React.ReactNode;
 }> = ({ seller, rating, product, children }) => (
-  <div className="bg-white rounded-2xl border border-orange-50 p-5 sm:p-6 hover:shadow-md transition-shadow">
+  <div className="bg-white rounded-2xl border border-mkt-light p-5 sm:p-6 hover:shadow-md transition-shadow">
     <div className="flex flex-col sm:flex-row sm:items-start gap-5">
       <div className="flex items-start gap-4 flex-1 min-w-0">
         <SellerAvatar seller={seller} />
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <Link to={`/market/villager/${seller.id}`} className="text-lg font-bold text-gray-900 hover:text-ngo-maroon">
+            <Link to={`/market/villager/${seller.id}`} className="text-lg font-bold text-gray-900 hover:text-mkt">
               {seller.name_en}
             </Link>
             <RatingBadge rating={rating} />
@@ -229,6 +229,6 @@ export const SellerCard: React.FC<{
 
 export const PageState: React.FC<{ loading?: boolean; error?: string }> = ({ loading, error }) => (
   <div className="min-h-[50vh] flex items-center justify-center text-gray-500">
-    {loading ? <Loader2 className="animate-spin text-ngo-maroon" size={32} /> : <p>{error}</p>}
+    {loading ? <Loader2 className="animate-spin text-mkt" size={32} /> : <p>{error}</p>}
   </div>
 );

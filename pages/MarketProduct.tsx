@@ -11,10 +11,10 @@ const SellerReviews: React.FC<{ seller: Seller; product: Product; reviews: Revie
   return (
     <div className="mt-4 pt-4 border-t border-gray-100">
       <div className="flex flex-wrap gap-4 text-sm font-semibold">
-        <button onClick={() => setOpen(open === 'read' ? 'none' : 'read')} className="inline-flex items-center gap-1.5 text-gray-600 hover:text-ngo-maroon">
+        <button onClick={() => setOpen(open === 'read' ? 'none' : 'read')} className="inline-flex items-center gap-1.5 text-gray-600 hover:text-mkt">
           <MessageSquare size={15} /> {reviews.length ? `Read ${reviews.length} review${reviews.length > 1 ? 's' : ''}` : 'Reviews'}
         </button>
-        <button onClick={() => setOpen(open === 'write' ? 'none' : 'write')} className="inline-flex items-center gap-1.5 text-gray-600 hover:text-ngo-maroon">
+        <button onClick={() => setOpen(open === 'write' ? 'none' : 'write')} className="inline-flex items-center gap-1.5 text-gray-600 hover:text-mkt">
           <PenLine size={15} /> Write a review
         </button>
       </div>
@@ -55,14 +55,14 @@ const MarketProduct: React.FC = () => {
   return (
     <div className="bg-ngo-beige min-h-screen pb-16">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        <Link to={`/market${category ? `?category=${category.id}` : ''}`} className="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-ngo-maroon">
+        <Link to={`/market${category ? `?category=${category.id}` : ''}`} className="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-mkt">
           <ArrowLeft size={16} /> {category ? category.name_en : 'Village Market'}
         </Link>
 
         <div className="mt-6 grid md:grid-cols-[minmax(0,380px)_1fr] gap-8 items-start">
           <ProductImage product={product} className="w-full aspect-[16/9] md:aspect-[4/3] rounded-2xl" emojiSize="text-7xl md:text-8xl" />
           <div>
-            <p className="text-sm font-bold text-ngo-maroon uppercase tracking-wide">{category?.name_en}</p>
+            <p className="text-sm font-bold text-mkt uppercase tracking-wide">{category?.name_en}</p>
             <h1 className="mt-2 text-4xl md:text-5xl font-bold text-gray-900">{product.name_en}</h1>
             <p className="text-2xl text-gray-500 mt-1">{product.name_mr}</p>
             {product.description && <p className="mt-4 text-gray-700 leading-relaxed max-w-2xl">{product.description}</p>}
@@ -88,7 +88,7 @@ const MarketProduct: React.FC = () => {
             <h2 className="text-xl font-bold text-gray-900 mb-4">More in {category?.name_en}</h2>
             <div className="flex flex-wrap gap-3">
               {related.map((p) => (
-                <Link key={p.id} to={`/market/${p.id}`} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-semibold text-gray-700 hover:border-ngo-orange hover:text-ngo-maroon">
+                <Link key={p.id} to={`/market/${p.id}`} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-semibold text-gray-700 hover:border-mkt hover:text-mkt">
                   <span aria-hidden="true">{p.emoji}</span> {p.name_en} <span className="text-gray-400 font-normal">{p.name_mr}</span>
                 </Link>
               ))}

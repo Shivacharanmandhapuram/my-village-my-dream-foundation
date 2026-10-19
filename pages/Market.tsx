@@ -7,13 +7,13 @@ import { ProductImage, PageState } from '../components/market/MarketUI';
 const ProductCard: React.FC<{ product: Product; sellerCount: number }> = ({ product, sellerCount }) => (
   <Link
     to={`/market/${product.id}`}
-    className="group bg-white rounded-2xl overflow-hidden border border-orange-50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex flex-col"
+    className="group bg-white rounded-2xl overflow-hidden border border-mkt-light hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex flex-col"
   >
     <ProductImage product={product} className="w-full aspect-[4/3]" />
     <div className="p-4 flex-1 flex flex-col">
-      <h3 className="font-bold text-gray-900 group-hover:text-ngo-maroon transition-colors">{product.name_en}</h3>
+      <h3 className="font-bold text-gray-900 group-hover:text-mkt transition-colors">{product.name_en}</h3>
       <p className="text-sm text-gray-500">{product.name_mr}</p>
-      <p className="mt-auto pt-3 text-xs font-semibold text-ngo-teal inline-flex items-center gap-1">
+      <p className="mt-auto pt-3 text-xs font-semibold text-mkt inline-flex items-center gap-1">
         <Users size={13} /> {sellerCount} {sellerCount === 1 ? 'villager sells' : 'villagers sell'} this
       </p>
     </div>
@@ -67,11 +67,11 @@ const Market: React.FC = () => {
   return (
     <div className="bg-ngo-beige min-h-screen">
       {/* Header */}
-      <section className="relative overflow-hidden bg-white border-b border-orange-50">
+      <section className="relative overflow-hidden bg-white border-b border-mkt-light">
         <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
         <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 text-sm font-bold text-ngo-maroon bg-orange-50 px-3 py-1.5 rounded-full mb-5">
+            <span className="inline-flex items-center gap-2 text-sm font-bold text-mkt bg-mkt-light px-3 py-1.5 rounded-full mb-5">
               <Store size={16} /> Village Market · गाव बाजार
             </span>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 leading-[1.1]">
@@ -89,7 +89,7 @@ const Market: React.FC = () => {
               value={query}
               onChange={(e) => setParam('q', e.target.value)}
               placeholder="Search milk, तूर, rice, a villager's name…"
-              className="w-full pl-14 pr-12 py-4 rounded-full border border-gray-200 bg-white shadow-sm text-base focus:border-ngo-orange focus:ring-4 focus:ring-orange-100 outline-none"
+              className="w-full pl-14 pr-12 py-4 rounded-full border border-gray-200 bg-white shadow-sm text-base focus:border-mkt focus:ring-4 focus:ring-mkt-light outline-none"
               aria-label="Search the market"
             />
             {query && (
@@ -106,7 +106,7 @@ const Market: React.FC = () => {
               { icon: <Handshake size={18} />, text: 'Agree on price, quantity and delivery' },
             ].map((s, i) => (
               <div key={i} className="flex items-center gap-3 text-gray-600">
-                <span className="w-9 h-9 rounded-full bg-ngo-warm-gray text-ngo-maroon flex items-center justify-center flex-shrink-0">{s.icon}</span>
+                <span className="w-9 h-9 rounded-full bg-mkt-light text-mkt flex items-center justify-center flex-shrink-0">{s.icon}</span>
                 {s.text}
               </div>
             ))}
@@ -115,14 +115,14 @@ const Market: React.FC = () => {
       </section>
 
       {/* Category chips */}
-      <div className="md:sticky md:top-[116px] z-30 bg-ngo-beige/95 backdrop-blur border-b border-orange-50">
+      <div className="md:sticky md:top-[116px] z-30 bg-ngo-beige/95 backdrop-blur border-b border-mkt-light">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex gap-2 overflow-x-auto">
           {[{ id: '', name_en: 'All', emoji: '🛒' }, ...catalog.categories].map((c) => (
             <button
               key={c.id}
               onClick={() => setParam('category', c.id)}
               className={`flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
-                activeCat === c.id ? 'bg-ngo-maroon text-white' : 'bg-white text-gray-700 hover:bg-orange-50 border border-gray-200'
+                activeCat === c.id ? 'bg-mkt text-white' : 'bg-white text-gray-700 hover:bg-mkt-light border border-gray-200'
               }`}
             >
               <span aria-hidden="true">{c.emoji}</span> {c.name_en}
@@ -136,7 +136,7 @@ const Market: React.FC = () => {
         {sections.length === 0 && (
           <div className="text-center py-16 text-gray-500">
             <p className="text-lg">Nothing matches “{query}”.</p>
-            <button onClick={() => setParams({}, { replace: true })} className="mt-3 text-ngo-maroon font-semibold hover:underline">
+            <button onClick={() => setParams({}, { replace: true })} className="mt-3 text-mkt font-semibold hover:underline">
               Show everything
             </button>
           </div>
@@ -159,12 +159,12 @@ const Market: React.FC = () => {
       </div>
 
       <section className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="bg-ngo-teal rounded-2xl p-8 md:p-10 text-white grid md:grid-cols-[1fr_auto] gap-6 items-center">
+        <div className="bg-mkt-dark rounded-2xl p-8 md:p-10 text-white grid md:grid-cols-[1fr_auto] gap-6 items-center">
           <div>
             <h2 className="text-2xl font-bold">Are you a villager who wants to sell here?</h2>
-            <p className="mt-2 text-teal-50">Listing is free. Contact the My Village My Dream team and we will add you and your products.</p>
+            <p className="mt-2 text-white/80">Listing is free. Contact the My Village My Dream team and we will add you and your products.</p>
           </div>
-          <a href="tel:+919970681002" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-ngo-teal font-bold hover:bg-teal-50">
+          <a href="tel:+919970681002" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-mkt font-bold hover:bg-mkt-light">
             <Phone size={18} /> +91 99706 81002
           </a>
         </div>
