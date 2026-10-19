@@ -30,3 +30,4 @@
 - 2026-10-16 — DB created + seeded, DATABASE_URL set, temp firewall rule removed. Live market verified (milk page, 12 villagers).
 - 2026-10-16 — Added 26 product photos (Unsplash/Pexels, credits db/photo-credits.md) + stars beside villager names; redeployed (0119df1). Client feedback from Dr. Nikhil. Weakest photos still: jowar (mixed grains), chivda (sev namkeen), blouse-stitching (generic tailor) — swap via CMS if real photos arrive.
 - 2026-10-16 — Switched CMS to shared-password login, deployed. GitHub auto-deploy workflow committed but push blocked until `gh auth refresh -s workflow` succeeds; 3+ commits waiting locally.
+- 2026-10-19 — Village Market pages switched to dark magenta theme (scoped 'mkt' colour #8B1A62 in index.html); rest of site stays maroon. Deployed + pushed (58e1676). Workflow commit still local, waiting on gh workflow scope.
