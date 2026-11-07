@@ -23,5 +23,8 @@
   },
   "platform": {
     "apiRuntime": "node:20"
+  },
+  "mimeTypes": {
+    ".mp4": "video/mp4"
   }
 }
