@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Heart, Users, MapPin, Quote, HandHeart, ExternalLink } from 'lucide-react';
 import CountUp from '../components/CountUp';
 import HeroSlider from '../components/HeroSlider';
+import StudentVoices from '../components/StudentVoices';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -241,6 +242,13 @@ const Home: React.FC = () => {
               View All Programs <ArrowRight size={20} className="ml-2" />
             </Link>
           </div>
+        </div>
+      </div>
+
+      {/* Student testimonial videos */}
+      <div id="student-voices" className="bg-ngo-beige py-[72px]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <StudentVoices />
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Stethoscope, BookOpen, Heart, Activity, Users, Smile, ChevronLeft, ChevronRight, MapPin, Leaf, AlertTriangle, GraduationCap, HandHeart, Siren, Bone, Ribbon, Palette, Sparkles } from 'lucide-react';
+import StudentVoices from '../components/StudentVoices';
 
 interface ProgramData {
   id: number;
@@ -428,6 +429,8 @@ const Programs: React.FC = () => {
             </div>
           ))}
         </div>
+
+        <StudentVoices className="mt-20" />
 
         {/* Global Impact Section */}
         <div className="mt-16 bg-gray-900 rounded-3xl overflow-hidden shadow-2xl relative group">
